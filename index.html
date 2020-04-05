@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Input File</title>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<script src="https://kit.fontawesome.com/640a71495f.js" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<style>
+    .up{
+		padding: 10px; font-weigth: bold; text-transform: uppercase; font-size: 25px;
+    }
+    .box-wrapper{
+		position: relative;
+    }
+    .file{
+		position: absolute;
+		display: inline-block;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 1;
+		opacity: 0;
+		cursor: pointer;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+		$('input[type="file"]').change(function(e){
+		    var filename = e.target.files[0].name;
+		    var code = [".png", ".jpg", ".gif"];
+		    var ext = filename.substr(-4);
+		    var i, x;
+		    for(i = 0; i < code.length; i++){
+		    	if(code[i] == ext){
+		    		x = 0;
+		    	}
+		    }
+		    if(x == 0){
+		    	$('.name-file').html("<i class='fas fa-file'></i> "+filename);
+		    } else {
+		    	alert("Extensão inválida para esta ação!");
+		    }
+		});
+    });
+</script>
+</head>
+<body class="bg-dark text-white text-center">
+    <nav class="navbar navbar-dark bg-dark">
+		<a class="navbar navbar-brand mx-auto" href="">Input → type="file"</a>
+    </nav>
+
+    <div class="container">
+    	<h3 class="name-file"></h3>
+    	<hr>
+	<form action="" method="post" enctype="multipart/form-data">
+	    <div class="box-wrapper">
+			<button class="btn btn-success btn-block up">
+			    <i class="fas fa-upload"></i> Carregue seu arquivo
+			</button>
+			<input type="file" class="file" name="file">
+	    </div>
+	    <hr>
+	    <input type="submit" class="enviar btn btn-info btn-lg" value="Enviar">
+	</form>
+    </div>
+</body>
+</html>
